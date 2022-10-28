@@ -1,0 +1,94 @@
+# Last Modified: Thu Oct 27 22:47:43 2022
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/opt/brave.com/brave/brave-browser {
+  include <abstractions/base>
+  include <abstractions/bash>
+  include <abstractions/consoles>
+  include <abstractions/dri-common>
+  include <abstractions/fonts>
+  include <abstractions/nameservice>
+  include <abstractions/ubuntu-browsers.d/ubuntu-integration>
+  include <abstractions/vulkan>
+
+  capability setgid,
+  capability setuid,
+  capability sys_admin,
+  capability sys_chroot,
+  capability sys_ptrace,
+
+  ptrace trace peer=/opt/brave.com/brave/brave-browser,
+
+  deny /opt/brave.com/brave/brave w,
+  deny /opt/brave.com/brave/brave-browser w,
+  deny /opt/brave.com/brave/chrome-sandbox w,
+  deny /sys/block/ r,
+  deny /sys/devices/virtual/ r,
+  deny /sys/firmware/ r,
+  deny /sys/hypervisor/ r,
+  deny /sys/kernel/ r,
+  deny /sys/module/ r,
+  deny /sys/power/ r,
+
+  /etc/pop-os/os-release r,
+  /home/*/Downloads/Brave*/ r,
+  /opt/brave.com/brave/ r,
+  /opt/brave.com/brave/** mr,
+  /opt/brave.com/brave/brave mrix,
+  /opt/brave.com/brave/chrome-sandbox mrix,
+  /opt/brave.com/brave/chrome_crashpad_handler mrix,
+  /proc/ r,
+  /proc/@{pid}/stat r,
+  /proc/sys/fs/inotify/max_user_watches r,
+  /proc/sys/kernel/yama/ptrace_scope r,
+  /proc/vmstat r,
+  /run/udev/data/** r,
+  /run/udev/data/+platform:* r,
+  /sys/** r,
+  /sys/bus/xen-backend/devices/ r,
+  /sys/bus/xen/devices/ r,
+  /usr/bin/basename mrix,
+  /usr/bin/bash ix,
+  /usr/bin/cat mrix,
+  /usr/bin/cut mrix,
+  /usr/bin/dash ix,
+  /usr/bin/dirname mrix,
+  /usr/bin/gawk mrix,
+  /usr/bin/grep mrix,
+  /usr/bin/mkdir mrix,
+  /usr/bin/readlink mrix,
+  /usr/bin/sed mrix,
+  /usr/bin/tr mrix,
+  /usr/bin/which.debianutils mrix,
+  /usr/bin/xdg-mime mrix,
+  /usr/bin/xdg-settings mrix,
+  /usr/share/libdrm/amdgpu.ids r,
+  owner /dev/shm/.org.chromium.Chromium.* r,
+  owner /dev/shm/.org.chromium.Chromium.* w,
+  owner /home/*/.cache/BraveSoftware/** rw,
+  owner /home/*/.cache/mesa_shader_cache/*/* k,
+  owner /home/*/.cache/mesa_shader_cache/*/* r,
+  owner /home/*/.cache/mesa_shader_cache/*/* w,
+  owner /home/*/.cache/mesa_shader_cache/*/*.tmp w,
+  owner /home/*/.cache/mesa_shader_cache/index rw,
+  owner /home/*/.config/BraveSoftware/ r,
+  owner /home/*/.config/BraveSoftware/** rwk,
+  owner /home/*/.config/BraveSoftware/Brave-Browser/**.so mr,
+  owner /home/*/.config/dconf/user r,
+  owner /home/*/.config/ibus/bus/ r,
+  owner /home/*/.config/ibus/bus/** r,
+  owner /home/*/.config/user-dirs.dirs r,
+  owner /home/*/.local/share/.org.chromium.Chromium.* w,
+  owner /home/*/.pki/nssdb/cert9.db k,
+  owner /home/*/.pki/nssdb/cert9.db rw,
+  owner /home/*/.pki/nssdb/key4.db k,
+  owner /home/*/.pki/nssdb/key4.db rw,
+  owner /home/*/.pki/nssdb/pkcs11.txt rw,
+  owner /home/*/Downloads/Brave*/** rw,
+  owner /opt/brave.com/brave/** rw,
+  owner /proc/@{pid}/ rw,
+  owner /proc/@{pid}/** rw,
+
+}

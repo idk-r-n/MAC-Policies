@@ -1,0 +1,46 @@
+# Last Modified: Thu Oct 27 21:47:08 2022
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/bin/solaar {
+  include <abstractions/X>
+  include <abstractions/base>
+  include <abstractions/gnome>
+  include <abstractions/python>
+
+  network netlink raw,
+
+  deny /dev/hidraw2 rw,
+  deny /sys/block/ r,
+  deny /sys/devices/virtual/ r,
+  deny /sys/firmware/ r,
+  deny /sys/hypervisor/ r,
+  deny /sys/kernel/ r,
+  deny /sys/module/ r,
+  deny /sys/power/ r,
+
+  /dev/hidraw1 rw,
+  /run/udev/data/** r,
+  /sys/** r,
+  /usr/bin/getfacl mrix,
+  /usr/bin/python3.10 ix,
+  /usr/bin/solaar r,
+  /usr/bin/uname mrix,
+  /usr/share/glib-2.0/schemas/gschemas.compiled r,
+  /usr/share/icons/Adwaita/cursor.theme r,
+  /usr/share/icons/Adwaita/cursors/ r,
+  /usr/share/icons/Adwaita/index.theme r,
+  /usr/share/icons/Pop/cursors/ r,
+  /usr/share/icons/Pop/index.theme r,
+  /usr/share/solaar/ r,
+  /usr/share/solaar/** r,
+  owner /home/*/.config/dconf/user r,
+  owner /home/*/.config/ibus/bus/ r,
+  owner /home/*/.config/solaar/** rw,
+  owner /proc/@{pid}/ r,
+  owner /proc/@{pid}/** r,
+  owner /run/user/*/.mutter-Xwaylandauth.* r,
+  owner /run/user/*/dconf/user rw,
+
+}
