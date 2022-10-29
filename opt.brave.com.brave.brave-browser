@@ -32,6 +32,7 @@ include <tunables/global>
   deny /sys/module/ r,
   deny /sys/power/ r,
 
+  /dev/video[0-9]* r, # camera access
   /etc/pop-os/os-release r,
   /home/*/Downloads/Brave*/ r,
   /opt/brave.com/brave/ r,
