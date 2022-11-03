@@ -1,0 +1,55 @@
+# Last Modified: Wed Nov  2 23:22:18 2022
+abi <abi/3.0>,
+
+include <tunables/global>
+
+/usr/lib/firefox/firefox-bin {
+  include <abstractions/audio>
+  include <abstractions/gnome>
+  include <abstractions/nameservice>
+  include <abstractions/openssl>
+  include <abstractions/python>
+  include <abstractions/ssl_keys>
+  include <abstractions/vulkan>
+
+  capability sys_admin,
+  capability sys_chroot,
+  capability sys_ptrace,
+
+  deny /etc/machine-id r,
+  deny /etc/passwd r,
+  deny /proc/sys/kernel/random/boot_id r,
+  deny /usr/lib/firefox/** w,
+
+  /dev/video[0-9]* r, # camera access
+  /etc/*/os-release r,
+  /etc/gai.conf r,
+  /etc/glvnd/egl_vendor.d/ r,
+  /etc/host.conf r,
+  /etc/hosts r,
+  /etc/mime.types r,
+  /etc/nsswitch.conf r,
+  /home/*/Downloads/Firefox/ rw,
+  /run/systemd/resolve/stub-resolv.conf r,
+  /run/systemd/userdb/ r,
+  /sys/bus/pci/devices/ r,
+  /sys/devices/** r,
+  /usr/bin/lsb_release mrix,
+  /usr/bin/python3.10 ix,
+  /usr/lib/firefox/** mrix,
+  /usr/share/libdrm/amdgpu.ids r,
+  owner "/home/*/.mozilla/firefox/Crash Reports/InstallTime*" r,
+  owner "/home/*/.mozilla/firefox/Crash Reports/LastCrash" w,
+  owner "/home/*/.mozilla/firefox/Crash Reports/events/*" w,
+  owner /home/*/.cache/mozilla/firefox/** rw,
+  owner /home/*/.config/dconf/user r,
+  owner /home/*/.config/ibus/bus/ r,
+  owner /home/*/.mozilla/** rwk,
+  owner /home/*/.mozilla/firefox/profiles.ini r,
+  owner /home/*/Downloads/Firefox/** rw,
+  owner /proc/@{pid}/** rw,
+  owner /run/user/*/.mutter-Xwaylandauth.* r,
+  owner /run/user/*/dconf/user rw,
+  owner /run/user/*/pulse/ rw,
+
+}
