@@ -1,0 +1,132 @@
+# Copyright (C) 2018 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+futex: 1
+recvmsg: 1
+poll: 1
+sched_yield: 1
+read: 1
+write: 1
+madvise: 1
+epoll_wait: 1
+mprotect: arg2 in ~PROT_EXEC || arg2 in ~PROT_WRITE
+writev: 1
+close: 1
+sendmsg: 1
+mmap: arg2 == PROT_READ|PROT_WRITE || arg2 == PROT_READ|PROT_EXEC || arg2 == PROT_NONE || arg2 == PROT_READ || arg2 == PROT_READ|PROT_WRITE|PROT_EXEC
+openat: 1
+newfstatat: 1
+gettid: 1
+getpid: 1
+access: 1
+ioctl: arg1 == DRM_IOCTL_AMDGPU_INFO or DRM_IOCTL_SIS_FB_FREE || arg1 == DRM_IOCTL_GET_CAP || arg1 == DRM_IOCTL_AMDGPU_WAIT_CS || arg1 == DRM_IOCTL_VERSION || arg1 == FIONBIO || arg1 == DRM_IOCTL_PRIME_HANDLE_TO_FD || arg1 == DRM_IOCTL_V3D_PERFMON_CREATE || arg1 == DRM_IOCTL_AMDGPU_GEM_CREATE or DRM_IOCTL_VIA_ALLOCMEM || arg1 == DRM_IOCTL_AMDGPU_GEM_METADATA || arg1 == DRM_IOCTL_AMDGPU_CTX or DRM_IOCTL_ETNAVIV_GEM_NEW or DRM_IOCTL_LIMA_GEM_INFO or DRM_IOCTL_MSM_GEM_NEW or DRM_IOCTL_V3D_CREATE_BO or DRM_IOCTL_VC4_WAIT_BO || arg1 == TCGETS || arg1 == DRM_IOCTL_GEM_CLOSE || arg1 == FIONREAD || arg1 == DRM_IOCTL_AMDGPU_GEM_MMAP || arg1 == FIOCLEX || arg1 == DRM_IOCTL_AMDGPU_CS
+getrandom: 1
+recvfrom: 1
+fcntl: 1
+readlink: 1
+munmap: 1
+lseek: 1
+stat: 1
+dup: 1
+rt_sigprocmask: 1
+rt_sigaction: 1
+fstat: 1
+prctl: arg0 == PR_CAPBSET_READ || arg0 == PR_SET_NAME || arg0 == PR_SET_SECCOMP || arg0 == PR_SET_NO_NEW_PRIVS
+fstatfs: 1
+sigaltstack: 1
+sched_getaffinity: 1
+getdents64: 1
+set_robust_list: 1
+rseq: 1
+clone3: 1
+geteuid: 1
+getuid: 1
+getpeername: 1
+setpriority: 1
+getpriority: 1
+ftruncate: 1
+memfd_create: 1
+getgid: 1
+fadvise64: 1
+getegid: 1
+lstat: 1
+getrusage: 1
+sendto: 1
+exit: 1
+epoll_ctl: 1
+setsockopt: 1
+sched_setaffinity: 1
+unlink: 1
+socketpair: 1
+fsync: 1
+rt_sigreturn: 1
+prlimit64: 1
+mkdir: 1
+clone: 1
+dup2: 1
+socket: arg0 == AF_UNIX || arg0 == AF_INET6 || arg0 == AF_INET || arg0 == AF_NETLINK
+connect: 1
+statx: 1
+pipe2: 1
+statfs: 1
+uname: 1
+pread64: 1
+getsockname: 1
+rename: 1
+brk: 1
+sysinfo: 1
+quotactl: 1
+getsockopt: 1
+capset: 1
+clock_gettime: 1
+exit_group: 1
+arch_prctl: 1
+eventfd2: 1
+epoll_create1: 1
+seccomp: 1
+umask: 1
+wait4: 1
+readahead: 1
+bind: 1
+restart_syscall: 1
+execve: 1
+set_tid_address: 1
+getresuid: 1
+getresgid: 1
+mincore: 1
+inotify_add_watch: 1
+timerfd_create: 1
+chroot: 1
+chdir: 1
+rmdir: 1
+timerfd_settime: 1
+readlinkat: 1
+sched_setscheduler: 1
+fallocate: 1
+getcwd: 1
+clock_nanosleep: 1
+sched_setattr: 1
+symlink: 1
+kcmp: 1
+faccessat2: 1
+shmget: 1
+shmat: 1
+shmctl: 1
+shmdt: 1
+shutdown: 1
+pwrite64: 1
+sched_getattr: 1
+inotify_init1: 1
+sched_getparam: 1
+sched_getscheduler: 1
